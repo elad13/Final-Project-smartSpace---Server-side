@@ -1,4 +1,3 @@
-//check from gal pc../
 
 package smartspace.data;
 
