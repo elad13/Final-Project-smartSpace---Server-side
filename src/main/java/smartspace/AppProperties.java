@@ -17,6 +17,4 @@ public class AppProperties {
 		this.name = name;
 	}
 	
-	//bla
-
 }
