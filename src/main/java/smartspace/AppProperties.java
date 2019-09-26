@@ -16,5 +16,5 @@ public class AppProperties {
 	public void setName(String name) {
 		this.name = name;
 	}
-	//bla
+	
 }
