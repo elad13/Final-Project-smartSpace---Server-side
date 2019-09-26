@@ -1,3 +1,5 @@
+//check from gal pc../
+
 package smartspace.data;
 
 import java.util.Date;
