@@ -166,11 +166,11 @@ public class RdbUserDao implements EnhancedUserDao<String> {
 	}
 	
 
-	@Override
+/*	@Override
 	public UserEntity updateOrInsert(UserEntity user) {
 		// TODO Auto-generated method stub
 		return null;
-	}
+	}*/
 
 	@Override
 	@Transactional
