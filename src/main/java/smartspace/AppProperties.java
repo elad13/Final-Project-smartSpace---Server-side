@@ -1,5 +1,5 @@
 package smartspace;
-//cccccccc 10/10/2019 check//
+//cccccccc 10/10/2019v11:55 check//
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
