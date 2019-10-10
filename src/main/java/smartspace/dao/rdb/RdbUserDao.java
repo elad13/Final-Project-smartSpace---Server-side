@@ -46,7 +46,7 @@ public class RdbUserDao implements EnhancedUserDao<String> {
 
 	@PostConstruct
 	public void adminCreator() {
-		mongo.getDb().drop();
+	//	mongo.getDb().drop();
 		UserEntity admin = new UserEntity();
 		admin.setRole(UserRole.ADMIN);
 		admin.setKey("admin#2019B.test");
