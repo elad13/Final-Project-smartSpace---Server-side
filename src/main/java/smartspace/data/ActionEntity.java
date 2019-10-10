@@ -1,3 +1,4 @@
+
 package smartspace.data;
 
 import java.util.Date;
