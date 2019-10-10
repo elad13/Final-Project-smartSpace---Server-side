@@ -58,7 +58,7 @@ public class MoreActionDaoIntegrationTest2 {
 		// @SuppressWarnings("unchecked") /// ? ///
 		Set<String> ids = IntStream.range(1, size + 1) // Stream Integer
 				.mapToObj(i -> this.factory.createNewAction("elementId",
-						"2019B.giron.aptik",
+						"smartSpaceProject",
 						"actionType",
 						new Date(),
 						"email@gmail.com",
@@ -77,7 +77,7 @@ public class MoreActionDaoIntegrationTest2 {
 		// GIVEN the database contains 50 Actions
 		IntStream.range(0, 50) // Stream Integer
 		.mapToObj(i -> this.factory.createNewAction("elementId",
-				"2019B.giron.aptik",
+				"smartSpaceProject",
 				"actionType",
 				new Date(),
 				"email@gmail.com",
@@ -97,7 +97,7 @@ public class MoreActionDaoIntegrationTest2 {
 		// GIVEN the database contains 12 Users
 		IntStream.range(0, 12) // Stream Integer
 		.mapToObj(i -> this.factory.createNewAction("elementId",
-				"2019B.giron.aptik",
+				"smartSpaceProject",
 				"actionType",
 				new Date(),
 				"email@gmail.com",
@@ -118,7 +118,7 @@ public class MoreActionDaoIntegrationTest2 {
 		List<ActionEntity> ids =
 				IntStream.range(0, 12) // Stream Integer
 				.mapToObj(i -> this.factory.createNewAction("elementId",
-						"2019B.giron.aptik",
+						"smartSpaceProject",
 						"actionType",
 						new Date(),
 						"email@gmail.com",
@@ -144,7 +144,7 @@ public class MoreActionDaoIntegrationTest2 {
 		// AND the database contains 20 Actions that do not have with name containing 'abc'
 		IntStream.range(0, 12) // Stream Integer
 		.mapToObj(i -> this.factory.createNewAction("abc",
-				"2019B.giron.aptik",
+				"smartSpaceProject",
 				"action abc#" + i,
 				new Date(),
 				"email@gmail.com",
@@ -154,7 +154,7 @@ public class MoreActionDaoIntegrationTest2 {
 
 		IntStream.range(12, 33) // Stream Integer
 		.mapToObj(i -> this.factory.createNewAction("xyz",
-				"2019B.giron.aptik",
+				"smartSpaceProject",
 				"action xyz#" + i,
 				new Date(),
 				"email@gmail.com",
@@ -176,7 +176,7 @@ public class MoreActionDaoIntegrationTest2 {
 		// AND the database contains 20 Actions that date is now
 		IntStream.range(0, 2) // Stream Integer
 		.mapToObj(i -> this.factory.createNewAction("elementId",
-				"2019B.giron.aptik",
+				"smartSpaceProject",
 				"action abc#" + i,
 				new Date(System.currentTimeMillis() - 24*3600000),
 				"email@gmail.com",
@@ -186,7 +186,7 @@ public class MoreActionDaoIntegrationTest2 {
 
 		IntStream.range(2, 23) // Stream Integer
 		.mapToObj(i -> this.factory.createNewAction("elementId",
-				"2019B.giron.aptik",
+				"smartSpaceProject",
 				"action xyz#" + i,
 				new Date(),
 				"email@gmail.com",

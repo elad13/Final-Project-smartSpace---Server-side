@@ -75,7 +75,7 @@ public class MoreUserDaoIntegrationTest2 {
 
 		// GIVEN the database contains 50 Users
 		IntStream.range(0, 50) // Stream Integer
-				.mapToObj(i -> this.factory.createNewUser("email"+i, "2019B.giron.aptik",
+				.mapToObj(i -> this.factory.createNewUser("email"+i, "smartSpaceProject",
 						"String userName", "String avatar", UserRole.PLAYER, num)).forEach(this.userDao::create);
 
 		// WHEN I read 10 Users after skipping first 10
@@ -91,7 +91,7 @@ public class MoreUserDaoIntegrationTest2 {
 
 		// GIVEN the database contains 12 Users
 		IntStream.range(0, 12) // Stream Integer
-				.mapToObj(i -> this.factory.createNewUser("email" + i, "2019B.giron.aptik",
+				.mapToObj(i -> this.factory.createNewUser("email" + i, "smartSpaceProject",
 						"String userName", "String avatar", UserRole.PLAYER, num))
 						.forEach(this.userDao::create);
 

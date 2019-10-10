@@ -62,7 +62,7 @@ public class ActionControllerIntegrationTests {
 	@PostConstruct
 	public void initElement() {
 		ElementEntity elementTest = new ElementEntity("String test", "String type2",
-				new Location(3, 2), new Date(System.currentTimeMillis()), "manager", "2019B.giron.aptik",  
+				new Location(3, 2), new Date(System.currentTimeMillis()), "manager", "smartSpaceProject",  
 				true, null);
 		elementTest.setElementId(null);
 		elementTest.setElementSmartspace(null);
@@ -82,7 +82,7 @@ public class ActionControllerIntegrationTests {
 		int size = 3;
 		IntStream.range(1, size + 1)
 			.mapToObj(i->new ActionEntity("elementId2",
-					"2019B.giron.aptik",
+					"smartSpaceProject",
 					"actionType2",
 					new Date(),
 					"email@gmail.com2",
@@ -112,11 +112,11 @@ public class ActionControllerIntegrationTests {
 		details.put("x", "10");
 		ActionBoundary newAction = new ActionBoundary();
 		newAction.setActionKey(new BoundaryIdKey(null, null));
-		newAction.setPlayer(new BoundaryEmailKey("manager","2019B.giron.aptik"));
+		newAction.setPlayer(new BoundaryEmailKey("manager","smartSpaceProject"));
 		newAction.setCreated(new Date());
 		newAction.setProperties(details);
 		newAction.setType("echo");
-		newAction.setElement(new BoundaryIdKey("1", "2019B.giron.aptik"));
+		newAction.setElement(new BoundaryIdKey("1", "smartSpaceProject"));
 		this.restTemplate
 			.postForObject(
 					this.baseUrl + "/smartspace/actions", 
@@ -134,7 +134,7 @@ public class ActionControllerIntegrationTests {
 		// GIVEN the database contains a single message
 		String key = this.actionDao
 				.create(new ActionEntity("elementId2",
-						"2019B.giron.aptik",
+						"smartSpaceProject",
 						"actionType2",
 						new Date(),
 						"email@gmail.com2",
@@ -154,7 +154,7 @@ public class ActionControllerIntegrationTests {
 		// GIVEN the database contains actions
 		ActionEntity check = this.actionDao
 				.create(new ActionEntity("elementId2",
-						"2019B.giron.aptik",
+						"smartSpaceProject",
 						"actionType2",
 						new Date(),
 						"email@gmail.com2",
@@ -163,7 +163,7 @@ public class ActionControllerIntegrationTests {
 		
 		this.actionDao
 		.create(new ActionEntity("elementId23",
-				"2019B.giron.aptik",
+				"smartSpaceProject",
 				"actionType2",
 				new Date(),
 				"email@gmail.com2",

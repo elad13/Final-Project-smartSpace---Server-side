@@ -82,7 +82,7 @@ public class UserControllerIntegrationTests {
 	@Test
 	public void testLoginValidUser() throws Exception{
 		// GIVEN the database contains 3 users
-		UserEntity testUser = new UserEntity("test@test.com", "2019B.giron.aptik", "giron", ":)", UserRole.PLAYER, 40);
+		UserEntity testUser = new UserEntity("test@test.com", "smartSpaceProject", "giron", ":)", UserRole.PLAYER, 40);
 		this.userDao.create(testUser);
 
 		
@@ -92,7 +92,7 @@ public class UserControllerIntegrationTests {
 			.getForObject(
 					this.baseUrl + "/smartspace/users/login/{userSmartspace}/{userEmail}", 
 					UserBoundary.class, 
-					"2019B.giron.aptik", "test@test.com", 10, 0);
+					"smartSpaceProject", "test@test.com", 10, 0);
 		
 		// THEN I receive 3 users
 		assertThat(response.convertToEntity(response)).isEqualToComparingFieldByField(testUser);
@@ -134,7 +134,7 @@ public class UserControllerIntegrationTests {
 	@Test
 	public void testUpdateUserWithoutTheirPoints() throws Exception{
 		// GIVEN the database contains a user
-		UserEntity testUserEntity = new UserEntity("test@test.com", "2019B.giron.aptik", "giron", ":)", UserRole.PLAYER, 40);
+		UserEntity testUserEntity = new UserEntity("test@test.com", "smartSpaceProject", "giron", ":)", UserRole.PLAYER, 40);
 		this.userDao.create(testUserEntity);
 		
 		
@@ -148,7 +148,7 @@ public class UserControllerIntegrationTests {
 		this.restTemplate
 			.put(this.baseUrl + "/smartspace/users/login/{userSmartspace}/{userEmail}", 
 					testUserBoundary, 
-					"2019B.giron.aptik", "test@test.com");
+					"smartSpaceProject", "test@test.com");
 		
 		// THEN the database contains updated details
 		assertThat(this.userDao.readById(testUserEntity.getKey()))
@@ -164,7 +164,7 @@ public class UserControllerIntegrationTests {
 	public void testDeleteByKey() throws Exception {
 		// GIVEN the database contains a single user
 		String key = this.userDao
-				.create(new UserEntity("test@test.com", "2019B.giron.aptik", "giron", ":)", UserRole.PLAYER, 40))
+				.create(new UserEntity("test@test.com", "smartSpaceProject", "giron", ":)", UserRole.PLAYER, 40))
 				.getKey();
 		// System.err.println("***** " + this.userDao.readAll().size() + " ******");
 		// WHEN I delete using the user key
@@ -178,11 +178,11 @@ public class UserControllerIntegrationTests {
 	@Test
 	public void testDeleteByKeyWhileDatabseIsNotEmptyAtTheEnd() throws Exception {
 		UserEntity check = this.userDao
-				.create(new UserEntity("test@test.com", "2019B.giron.aptik", "giron", ":)", UserRole.PLAYER, 40));
+				.create(new UserEntity("test@test.com", "smartSpaceProject", "giron", ":)", UserRole.PLAYER, 40));
 		String key = check.getKey();
 		
 		this.userDao
-		.create(new UserEntity("test@test.com123", "2019B.giron.aptik123", "giron123", ":)", UserRole.PLAYER, 40));
+		.create(new UserEntity("test@test.com123", "smartSpaceProject123", "giron123", ":)", UserRole.PLAYER, 40));
 		
 		 System.err.println("***** " + this.userDao.readAll().size() + "\n" + this.userDao.readAll() + " ******");
 

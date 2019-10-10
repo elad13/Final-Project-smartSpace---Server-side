@@ -60,7 +60,7 @@ public class RdbUserDao implements EnhancedUserDao<String> {
 	public void managerCreator() {
 		UserEntity manager = new UserEntity();
 		manager.setRole(UserRole.MANAGER);
-		manager.setKey("manager#2019B.giron.aptik");
+		manager.setKey("manager#smartSpaceProject");
 		manager.setAvatar(":)");
 		manager.setPoints(122);
 		manager.setUserName("Moshe");		

@@ -76,7 +76,7 @@ public class UserDaoIntegrationTests {
 
 		// THEN the same user is returned
 		assertThat(userFromDB).isNotNull().extracting("userEmail", "userSmartspace","userName")
-		.containsExactly("String userEmail", "2019B.giron.aptik", "String userName");
+		.containsExactly("String userEmail", "smartSpaceProject", "String userName");
 
 	}
 

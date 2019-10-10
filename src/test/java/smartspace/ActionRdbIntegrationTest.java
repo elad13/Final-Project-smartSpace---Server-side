@@ -33,7 +33,7 @@ public class ActionRdbIntegrationTest {
 		testAction = new ActionEntity();
 		
 		testAction = entityFactory.createNewAction("elementId",
-				"2019B.giron.aptik",
+				"smartSpaceProject",
 				"actionType",
 				new Date(),
 				"email@gmail.com",
@@ -56,7 +56,7 @@ public class ActionRdbIntegrationTest {
 	@Test
 	public void readAll() {
 		ActionEntity actionToCreate2 = entityFactory.createNewAction("elementId2",
-				"2019B.giron.aptik",
+				"smartSpaceProject",
 				"actionType2",
 				new Date(),
 				"email@gmail.com2",

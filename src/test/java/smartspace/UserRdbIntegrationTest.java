@@ -35,7 +35,7 @@ public class UserRdbIntegrationTest {
 		testUser = new UserEntity();
 		
 		testUser = entityFactory.createNewUser("email@gmail.com",
-				"2019B.giron.aptik",
+				"smartSpaceProject",
 				"userName",
 				"avatar.png",
 				UserRole.PLAYER,
@@ -51,7 +51,7 @@ public class UserRdbIntegrationTest {
 	@Test
 	public void addUser() {
 		List<UserEntity> users = userRep.readAll();
-		assertThat(users.get(1).getKey()).isEqualTo("manager" + "#" + "2019B.giron.aptik");
+		assertThat(users.get(1).getKey()).isEqualTo("manager" + "#" + "smartSpaceProject");
 	}
 	
 	@Test
@@ -70,7 +70,7 @@ public class UserRdbIntegrationTest {
 	@Test
 	public void readAll() {
 		UserEntity userToCreate2 = entityFactory.createNewUser("email2@gmail.com",
-				"2019B.giron.aptik",
+				"smartSpaceProject",
 				"userName2",
 				"avatar2.png",
 				UserRole.PLAYER,

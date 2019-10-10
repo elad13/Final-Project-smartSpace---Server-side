@@ -69,7 +69,7 @@ public class ElementControllerIntegrationTests {
 		ElementBoundary newElement = new ElementBoundary();
 		newElement.setKey(new BoundaryIdKey(null, null));
 		newElement.setName("Demo1");
-		newElement.setCreator(new BoundaryEmailKey("manager","2019B.giron.aptik"));
+		newElement.setCreator(new BoundaryEmailKey("manager","smartSpaceProject"));
 		newElement.setCreated(new Date());
 		newElement.setElementProperties(details);
 		newElement.setLatlng(new LocationBoundary(40, 50));
@@ -78,7 +78,7 @@ public class ElementControllerIntegrationTests {
 					this.baseUrl + "/smartspace/elements/{managerSmartspace}/{managerEmail}", 
 					newElement, 
 					ElementBoundary.class, 
-					"2019B.giron.aptik", "manager");
+					"smartSpaceProject", "manager");
 		
 		// THEN the database contains a single element
 		assertThat(this.elementDao
@@ -96,7 +96,7 @@ public class ElementControllerIntegrationTests {
 		details.put("x", "10");
 		ElementBoundary newElement = new ElementBoundary();
 		newElement.setName("Demo1");
-		newElement.setCreator(new BoundaryEmailKey("giron","2019B.giron.aptik"));
+		newElement.setCreator(new BoundaryEmailKey("giron","smartSpaceProject"));
 		newElement.setCreated(new Date());
 		newElement.setKey(new BoundaryIdKey(null, null));
 		newElement.setLatlng(new LocationBoundary(7, 8));
@@ -106,7 +106,7 @@ public class ElementControllerIntegrationTests {
 					this.baseUrl + "/smartspace/elements/{managerSmartspace}/{managerEmail}", 
 					newElement, 
 					ElementBoundary.class, 
-					"2019B.giron.aptik", "giron");
+					"smartSpaceProject", "giron");
 		
 		// THEN the test end with exception
 	}
@@ -127,7 +127,7 @@ public class ElementControllerIntegrationTests {
 			.getForObject(
 					this.baseUrl + "/smartspace/elements/{userSmartspace}/{userEmail}?size={size}&page={page}", 
 					ElementBoundary[].class, 
-					"2019B.giron.aptik", "manager", 10, 0);
+					"smartSpaceProject", "manager", 10, 0);
 		
 		// THEN I receive 3 elements
 		assertThat(response)
@@ -139,7 +139,7 @@ public class ElementControllerIntegrationTests {
 	public void testUpdateElement() throws Exception{
 		// GIVEN the database contains a element
 		ElementEntity testElementEntity = new ElementEntity("String test", "String type2",
-				new Location(3, 2), new Date(System.currentTimeMillis()), "manager", "2019B.giron.aptik",  
+				new Location(3, 2), new Date(System.currentTimeMillis()), "manager", "smartSpaceProject",  
 				true, null);
 		testElementEntity.setElementId(null);
 		testElementEntity.setElementSmartspace(null);
@@ -153,14 +153,14 @@ public class ElementControllerIntegrationTests {
 		newDetails.put("y", "new details");
 		newDetails.put("expired", true);
 		ElementBoundary testElementBoundary = new ElementBoundary();
-		testElementBoundary.setCreator(new BoundaryEmailKey("2019B.giron.aptik", "giron.test"));
+		testElementBoundary.setCreator(new BoundaryEmailKey("smartSpaceProject", "giron.test"));
 		testElementBoundary.setKey(new BoundaryIdKey(null, null));
 		testElementBoundary.setElementProperties(newDetails);
 		testElementBoundary.setLatlng(new LocationBoundary(50, 30));
 		this.restTemplate
 			.put(this.baseUrl + "/smartspace/elements/{managerSmartspace}/{managerEmail}/{elementSmartspace}/{elementId}", 
 					testElementBoundary, 
-					"2019B.giron.aptik", "manager", "2019B.giron.aptik", testElementEntity.getElementId());
+					"smartSpaceProject", "manager", "smartSpaceProject", testElementEntity.getElementId());
 		
 		// THEN the database contains updated details
 		assertThat(this.elementDao.readById(testElementEntity.getKey()))
@@ -187,7 +187,7 @@ public class ElementControllerIntegrationTests {
 			.getForObject(
 					this.baseUrl + "/smartspace/elements/{managerSmartspace}/{managerEmail}?size={size}&page={page}", 
 					String[].class, 
-					"2019B.giron.aptik","manager", 10, 1);
+					"smartSpaceProject","manager", 10, 1);
 		
 		// THEN the result is empty
 		assertThat(result)
@@ -224,7 +224,7 @@ public class ElementControllerIntegrationTests {
 		// GIVEN the database contains a single message
 		String key = this.elementDao
 				.create(new ElementEntity("String test", "String type2",
-						new Location(3, 2), new Date(System.currentTimeMillis()), "manager", "2019B.giron.aptik",  
+						new Location(3, 2), new Date(System.currentTimeMillis()), "manager", "smartSpaceProject",  
 						true, null))
 				.getKey();
 		// System.err.println("***** " + this.elementDao.readAll().size() + " ******");
@@ -241,13 +241,13 @@ public class ElementControllerIntegrationTests {
 		// GIVEN the database contains 2 element
 		ElementEntity check = this.elementDao
 				.create(new ElementEntity("String test", "String type2",
-						new Location(3, 2), new Date(System.currentTimeMillis()), "manager", "2019B.giron.aptik",  
+						new Location(3, 2), new Date(System.currentTimeMillis()), "manager", "smartSpaceProject",  
 						true, null));
 		String key = check.getKey();
 		
 		this.elementDao
 		.create(new ElementEntity("String test1", "String type23",
-				new Location(3, 2), new Date(System.currentTimeMillis()), "manager", "2019B.giron.aptik",  
+				new Location(3, 2), new Date(System.currentTimeMillis()), "manager", "smartSpaceProject",  
 				true, null));
 		
 		 //System.err.println("***** " + this.elementDao.readAll().size() + "\n" + this.elementDao.readAll() + " ******");
