@@ -59,9 +59,9 @@ public class RdbActionDao implements EnhancedActionDao {
 		if (update.getActionType() != null) {
 			existing.setActionType(update.getActionType());
 		}
-		if (update.getCreationTimestamp() != null) {
+		/* if (update.getCreationTimestamp() != null) {
 			existing.setCreationTimestamp(update.getCreationTimestamp());
-		}
+		} */
 		if (update.getElementId() != null) {
 			existing.setElementId(update.getElementId());
 		}

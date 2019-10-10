@@ -52,12 +52,12 @@ public class ElementDaoImpl implements ElementDao<String>{
 		synchronized (this.elements) {
 			ElementEntity existing = this.readById(update.getKey())
 					.orElseThrow(() -> new RuntimeException("not element to update"));
-			if (update.getElementSmartspace() != null) {
+			/* if (update.getElementSmartspace() != null) {
 				existing.setElementSmartspace(update.getElementSmartspace());
 			}
 			if (update.getElementId() != null) {
 				existing.setElementId(update.getElementId());
-			}
+			} */
 			if (update.getLocation() != null) {
 				existing.setLocation(update.getLocation());
 			}
@@ -67,7 +67,7 @@ public class ElementDaoImpl implements ElementDao<String>{
 			if (update.getType() != null) {
 				existing.setType(update.getType());
 			}
-			if (update.getCreationTimestamp() != null) {
+			/* if (update.getCreationTimestamp() != null) {
 				existing.setCreationTimestamp(update.getCreationTimestamp());
 			}
 			if (update.getCreatorSmartspace() != null) {
@@ -75,7 +75,7 @@ public class ElementDaoImpl implements ElementDao<String>{
 			}
 			if (update.getCreatorEmail() != null) {
 				existing.setCreatorEmail(update.getCreatorEmail());
-			}
+			} */
 			if (update.getMoreAttributes() != null) {
 				existing.setMoreAttributes(update.getMoreAttributes());
 			}

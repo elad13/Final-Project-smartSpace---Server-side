@@ -69,7 +69,7 @@ public class UserEntity implements SmartSpaceEntity<String> {
 		this.avatar = avatar;
 	}
 	
-	@Enumerated(EnumType.STRING)
+	//@Enumerated(EnumType.STRING)
 	public UserRole getRole() {
 		return role;
 	}
