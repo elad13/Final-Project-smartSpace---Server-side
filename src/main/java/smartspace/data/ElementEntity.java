@@ -137,6 +137,7 @@ public class ElementEntity implements SmartSpaceEntity<String> {
 		return this.key;
 		//return this.elementId + "#" + this.elementSmartspace;
 		}
+	
 
 	@Override
 	public void setKey(String key) {

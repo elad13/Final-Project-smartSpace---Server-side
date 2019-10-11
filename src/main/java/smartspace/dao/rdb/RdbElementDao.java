@@ -12,18 +12,22 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+
+import com.mongodb.client.FindIterable;
+
 import smartspace.AppProperties;
 import smartspace.dao.EnhancedElementDao;
 import smartspace.data.ElementEntity;
 import smartspace.data.Location;
-	
+//??//
+import org.springframework.data.mongodb.core.MongoTemplate;	
+
 @Repository
 public class RdbElementDao implements EnhancedElementDao<String>{
 	private ElementCrud elementCrud;
 	private GenericIdGeneratorCrud genericIdGeneratorCrud; 
 	private AppProperties appProperties;
-	
-	
+	private @Autowired MongoTemplate mongo;
 	
 	
 	@Autowired	
@@ -34,19 +38,29 @@ public class RdbElementDao implements EnhancedElementDao<String>{
 		this.elementCrud = elementCrud;		
 		this.genericIdGeneratorCrud = genericIdGeneratorCrud;
 		this.appProperties = appProperties;
+		
 	}
 	
 
 	@Override
 	@Transactional
 	public ElementEntity create(ElementEntity elementEntity) {
+		
+		/* try to find the last Id on mongoDb
+		 FindIterable<document> cursor = mongo.getCollection("SOME_COLLECTION").
+		  find()sort(new Document
+		  ("_id", -1)).limit(1);
+		 */
+		//	mongo.foo.find().sort({x:1});
+		
 		GenericIdGenerator nextId = 
-				this.genericIdGeneratorCrud.save(new GenericIdGenerator());
+		
+			this.genericIdGeneratorCrud.save(new GenericIdGenerator());
 			elementEntity.setKey(Long.toString(nextId.getId()) +"#"+ appProperties.getName());
 			this.genericIdGeneratorCrud.delete(nextId);
 		if (!this.elementCrud.existsById(elementEntity.getKey())) {
 			 ElementEntity rv = this.elementCrud.save(elementEntity);
-			return rv;
+			 return rv;
 		}else {
 			throw new RuntimeException("Element already exists with key: " + elementEntity.getKey());
 		}
