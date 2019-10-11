@@ -68,7 +68,7 @@ public class ElementEntity implements SmartSpaceEntity<String> {
 		this.elementId = elementId;
 	}
 	
-	@Embedded
+	//@Embedded
 	public Location getLocation() {
 		return location;
 	}
@@ -90,7 +90,7 @@ public class ElementEntity implements SmartSpaceEntity<String> {
 		this.type = type;
 	}
 
-	@Temporal(TemporalType.TIMESTAMP)
+	//@Temporal(TemporalType.TIMESTAMP)
 	public Date getCreationTimestamp() {
 		return creationTimestamp;
 	}
@@ -119,8 +119,8 @@ public class ElementEntity implements SmartSpaceEntity<String> {
 		this.creatorEmail = creatorEmail;
 	}
 	
-	@Lob
-	@Convert(converter=MapToJsonConverter.class)
+	//@Lob
+	//@Convert(converter=MapToJsonConverter.class)
 	public Map<String, Object> getMoreAttributes() {
 		return moreAttributes;
 	}

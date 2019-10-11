@@ -45,8 +45,13 @@ public class RdbUserDao implements EnhancedUserDao<String> {
 	}
 
 	@PostConstruct
+	public void adminAndManagerCreator() {
+		adminCreator();
+		managerCreator();
+	}
+	
 	public void adminCreator() {
-	//	mongo.getDb().drop();
+		//mongo.getDb().drop(); //- delete all the DB
 		UserEntity admin = new UserEntity();
 		admin.setRole(UserRole.ADMIN);
 		admin.setKey("admin#2019B.test");
@@ -56,14 +61,13 @@ public class RdbUserDao implements EnhancedUserDao<String> {
 		this.userCrud.save(admin);
 	}
 	
-	@PostConstruct
 	public void managerCreator() {
 		UserEntity manager = new UserEntity();
 		manager.setRole(UserRole.MANAGER);
 		manager.setKey("manager#smartSpaceProject");
-		manager.setAvatar(":)");
+		manager.setAvatar(":P");
 		manager.setPoints(122);
-		manager.setUserName("Moshe");		
+		manager.setUserName("Menahem");		
 		this.userCrud.save(manager);
 	}
 	
@@ -71,7 +75,7 @@ public class RdbUserDao implements EnhancedUserDao<String> {
 	@Transactional
 	public void deleteAll() {
 		// SQL: DELETE
-		this.userCrud.deleteAll();
+		this.userCrud.deleteAll(); 
 	}
 	
 	@Override

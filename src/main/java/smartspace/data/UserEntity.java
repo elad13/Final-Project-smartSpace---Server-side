@@ -1,6 +1,6 @@
 package smartspace.data;
 
-
+//ccc//
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 
@@ -69,7 +69,7 @@ public class UserEntity implements SmartSpaceEntity<String> {
 		this.avatar = avatar;
 	}
 	
-	@Enumerated(EnumType.STRING)
+	//@Enumerated(EnumType.STRING)
 	public UserRole getRole() {
 		return role;
 	}
