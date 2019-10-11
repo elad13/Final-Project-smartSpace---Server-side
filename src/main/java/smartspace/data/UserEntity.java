@@ -1,6 +1,6 @@
 package smartspace.data;
 
-//ccc//
+//ccc2//
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 
