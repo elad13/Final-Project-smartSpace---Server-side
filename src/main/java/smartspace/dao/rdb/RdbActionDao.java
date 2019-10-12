@@ -52,7 +52,7 @@ public class RdbActionDao implements EnhancedActionDao {
 
 	@Override
 	@Transactional
-	public void update(ActionEntity update) {   ////////
+	public void update(ActionEntity update) {
 		ActionEntity existing = 
 				this.readById(update.getKey())
 					.orElseThrow(() -> new RuntimeException("not action to update"));
