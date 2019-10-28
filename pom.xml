@@ -2,8 +2,8 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>smartSpaceProject.smartspace</groupId>
-	<artifactId>smartSpaceProject.smartspace</artifactId>
+	<groupId>smartSpaceProject</groupId>
+	<artifactId>smartSpaceProject</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 
 	<parent>
@@ -73,6 +73,29 @@
 			<artifactId>spring-data-mongodb</artifactId>
 		</dependency>
 
+
+
+
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>1.2.3</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.nativelibs4java</groupId>
+			<artifactId>bridj</artifactId>
+			<version>0.7.0</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.github.sarxos/webcam-capture -->
+		<dependency>
+			<groupId>com.github.sarxos</groupId>
+			<artifactId>webcam-capture</artifactId>
+			<version>0.3.12</version>
+		</dependency>
+
+
 	</dependencies>
 
 
@@ -99,6 +122,7 @@
 				<configuration>
 					<source>1.8</source>
 					<target>1.8</target>
+					<skipTests>${skipTests}</skipTests>
 				</configuration>
 			</plugin>
 		</plugins>
