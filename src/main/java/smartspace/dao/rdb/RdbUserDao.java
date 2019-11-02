@@ -54,10 +54,11 @@ public class RdbUserDao implements EnhancedUserDao<String> {
 		//mongo.getDb().drop(); //- delete all the DB
 		UserEntity admin = new UserEntity();
 		admin.setRole(UserRole.ADMIN);
-		admin.setKey("admin#2019B.test");
+		//admin.setKey("admin#2019B.test");
+		admin.setKey("admin#smartSpaceProject");
 		admin.setAvatar(":)");
 		admin.setPoints(122);
-		admin.setUserName("Giron");
+		admin.setUserName("theAdminName");
 		this.userCrud.save(admin);
 	}
 	
@@ -67,7 +68,7 @@ public class RdbUserDao implements EnhancedUserDao<String> {
 		manager.setKey("manager#smartSpaceProject");
 		manager.setAvatar(":P");
 		manager.setPoints(122);
-		manager.setUserName("Menahem");		
+		manager.setUserName("theManagerName");		
 		this.userCrud.save(manager);
 	}
 	
