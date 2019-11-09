@@ -207,6 +207,10 @@ public class RdbElementDao implements EnhancedElementDao<String>{
 				(maxLocation.getX(), maxLocation.getY(), PageRequest.of(page, size));
 		List<ElementEntity> minList = this.elementCrud.readAllByLocationXGreaterThanAndLocationYGreaterThan
 				(minLocation.getX(), minLocation.getY(), PageRequest.of(page, size));
+		/*	//061119 Eyal's note - marge to one function:
+		 List<ElementEntity> theLise =  this.elementCrud.findAllByLocationXGreaterThanAndLocationXLessThanAndLocationYGreaterThanAndLocationYLessThan
+		(minLocation.getX(), maxLocation.getX(), minLocation.getY(), maxLocation.getY(), PageRequest.of(page, size));
+		//need to understand what we got back */
 		maxList.stream().filter(c -> minList.contains(c)).collect(Collectors.toList());
 		return maxList;			
 	}
