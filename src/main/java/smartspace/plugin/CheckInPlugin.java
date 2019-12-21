@@ -19,14 +19,14 @@ import smartspace.data.ElementEntity;
 import smartspace.data.UserEntity;
 
 @Component
-public class CheckInOutPlugin implements Plugin {
+public class CheckInPlugin implements Plugin {
 
 	private EnhancedUserDao<String> users;
 	private EnhancedElementDao<String> elements;
 	private final int POINTS_FOR_OPEN_DOOR = 5;
 
 	@Autowired
-	public CheckInOutPlugin(EnhancedUserDao<String> users, EnhancedElementDao<String> elements) {
+	public CheckInPlugin(EnhancedUserDao<String> users, EnhancedElementDao<String> elements) {
 		this.users = users;
 		this.elements = elements;
 	}
@@ -45,14 +45,14 @@ public class CheckInOutPlugin implements Plugin {
 			user.setPoints(user.getPoints() + POINTS_FOR_OPEN_DOOR);
 			users.update(user);
 
-			if (doorElement.getMoreAttributes().get("status").equals("Open")) {
+/*			if (doorElement.getMoreAttributes().get("status").equals("Open")) {
 				doorElement.getMoreAttributes().remove("status");
 				doorElement.getMoreAttributes().put("status", "Close");
 			}
-			else {
+			else {*/
 				doorElement.getMoreAttributes().remove("status");
 				doorElement.getMoreAttributes().put("status", "Open");
-			}
+			//}
 		elements.update(doorElement);
 		} catch (Exception e) {
 			throw new RuntimeException(e);
