@@ -19,14 +19,14 @@ import smartspace.data.ElementEntity;
 import smartspace.data.UserEntity;
 
 @Component
-public class ChangeVolumePlugin implements Plugin {
+public class ChangeTemperaturePlugin implements Plugin {
 
 	private EnhancedUserDao<String> users;
 	private EnhancedElementDao<String> elements;
 	
 
 	@Autowired
-	public ChangeVolumePlugin(EnhancedUserDao<String> users, EnhancedElementDao<String> elements) {
+	public ChangeTemperaturePlugin(EnhancedUserDao<String> users, EnhancedElementDao<String> elements) {
 		this.users = users;
 		this.elements = elements;
 	}
@@ -39,13 +39,13 @@ public class ChangeVolumePlugin implements Plugin {
 					.orElseThrow(() -> new NullPointerException("Element Doesn't exist"));
 			UserEntity user = users.readById(action.getPlayerEmail() + "#" + action.getPlayerSmartspace())
 					.orElseThrow(() -> new NullPointerException("User Doesn't exist"));
-			if(!currentElement.getType().equals("audio"))
-				throw new NullPointerException("This element doesn't have audio option");
-			if(currentElement.getMoreAttributes().get("volume").equals(null))
-				throw new NullPointerException("This element doesn't have sound attribute");
+			if(!currentElement.getType().equals("Air Conditioner"))
+				throw new NullPointerException("This element doesn't have temperature option");
+			if(currentElement.getMoreAttributes().get("temperature").equals(null))
+				throw new NullPointerException("This element doesn't have temperature attribute");
 
-			currentElement.getMoreAttributes().remove("volume");
-			currentElement.getMoreAttributes().put("volume", action.getMoreAttributes().get("volume"));
+			currentElement.getMoreAttributes().remove("temperature");
+			currentElement.getMoreAttributes().put("temperature", action.getMoreAttributes().get("temperature"));
 		elements.update(currentElement);
 		} catch (Exception e) {
 			throw new RuntimeException(e);
