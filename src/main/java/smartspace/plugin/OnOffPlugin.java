@@ -54,6 +54,14 @@ public class OnOffPlugin implements Plugin {
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
+		if (action.getMoreAttributes().get("state").equals("On")) {
+			action.getMoreAttributes().remove("state");
+			action.getMoreAttributes().put("state", "Off");
+		}
+		else {
+			action.getMoreAttributes().remove("state");
+			action.getMoreAttributes().put("state", "On");
+		}
 		return action;
 	}
 }
