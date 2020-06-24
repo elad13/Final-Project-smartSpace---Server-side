@@ -28,23 +28,14 @@ public class ActionController {
 		this.actionService = actionService;
 	}
 
-	@RequestMapping(path = "/smartspace/admin/actions/{adminSmartspace}/{adminEmail}", 
-			method = RequestMethod.POST, 
-			consumes = MediaType.APPLICATION_JSON_VALUE, 
-			produces = MediaType.APPLICATION_JSON_VALUE)
-	public ActionBoundary[] importActions(
-			@RequestBody ActionBoundary[] actionsToImport,
-			@PathVariable("adminSmartspace") String adminSmartspace, 
-			@PathVariable("adminEmail") String adminEmail) {
+	@RequestMapping(path = "/smartspace/admin/actions/{adminSmartspace}/{adminEmail}", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ActionBoundary[] importActions(@RequestBody ActionBoundary[] actionsToImport,
+			@PathVariable("adminSmartspace") String adminSmartspace, @PathVariable("adminEmail") String adminEmail) {
 		Collection<ActionEntity> actionEntitiesToImport = ((Arrays.asList(actionsToImport))).stream()
 				.map(action -> new ActionBoundary().convertToEntity(action)).collect(Collectors.toList());
 
-		return this.actionService
-				.store(adminSmartspace, adminEmail, actionEntitiesToImport)
-				.stream()
-				.map(ActionBoundary::new)
-				.collect(Collectors.toList()).
-				toArray(new ActionBoundary[0]);
+		return this.actionService.store(adminSmartspace, adminEmail, actionEntitiesToImport).stream()
+				.map(ActionBoundary::new).collect(Collectors.toList()).toArray(new ActionBoundary[0]);
 	}
 
 	@RequestMapping(path = "/smartspace/admin/actions/{adminSmartspace}/{adminEmail}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -55,30 +46,18 @@ public class ActionController {
 		return this.actionService.getActionUsingPagination(adminEmail + "#" + adminSmartspace, size, page).stream()
 				.map(ActionBoundary::new).collect(Collectors.toList()).toArray(new ActionBoundary[0]);
 	}
-	
-	
-	@RequestMapping(
-			path="/smartspace/actions",
-			method=RequestMethod.POST,
-			consumes=MediaType.APPLICATION_JSON_VALUE,
-			produces=MediaType.APPLICATION_JSON_VALUE)
-	public ActionBoundary newAction (
-			@RequestBody ActionBoundary action){
-		if(action.getActionKey().getId() == null && action.getActionKey().getSmartspace() == null)
-			return new ActionBoundary(
-					this.actionService
-						.invoke(action.convertToEntity(action)));
+
+	@RequestMapping(path = "/smartspace/actions", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ActionBoundary newAction(@RequestBody ActionBoundary action) {
+		if (action.getActionKey().getId() == null && action.getActionKey().getSmartspace() == null)
+			return new ActionBoundary(this.actionService.invoke(action.convertToEntity(action)));
 		else {
 			throw new NullPointerException("action key must be Null");
 		}
 	}
 
-	@RequestMapping(
-			path="/smartspace/actions/delete/{key}",
-			method=RequestMethod.DELETE)
-	public void deleteByKey(
-			@PathVariable("key") String key) {
-		this.actionService
-			.deleteByKey(key);
+	@RequestMapping(path = "/smartspace/actions/delete/{key}", method = RequestMethod.DELETE)
+	public void deleteByKey(@PathVariable("key") String key) {
+		this.actionService.deleteByKey(key);
 	}
 }

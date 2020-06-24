@@ -96,7 +96,7 @@ public class ElementControllerIntegrationTests {
 		details.put("x", "10");
 		ElementBoundary newElement = new ElementBoundary();
 		newElement.setName("Demo1");
-		newElement.setCreator(new BoundaryEmailKey("giron","smartSpaceProject"));
+		newElement.setCreator(new BoundaryEmailKey("testUser","smartSpaceProject"));
 		newElement.setCreated(new Date());
 		newElement.setKey(new BoundaryIdKey(null, null));
 		newElement.setLatlng(new LocationBoundary(7, 8));
@@ -106,7 +106,7 @@ public class ElementControllerIntegrationTests {
 					this.baseUrl + "/smartspace/elements/{managerSmartspace}/{managerEmail}", 
 					newElement, 
 					ElementBoundary.class, 
-					"smartSpaceProject", "giron");
+					"smartSpaceProject", "testUser");
 		
 		// THEN the test end with exception
 	}
@@ -153,7 +153,7 @@ public class ElementControllerIntegrationTests {
 		newDetails.put("y", "new details");
 		newDetails.put("expired", true);
 		ElementBoundary testElementBoundary = new ElementBoundary();
-		testElementBoundary.setCreator(new BoundaryEmailKey("smartSpaceProject", "giron.test"));
+		testElementBoundary.setCreator(new BoundaryEmailKey("smartSpaceProject", "testUser.test"));
 		testElementBoundary.setKey(new BoundaryIdKey(null, null));
 		testElementBoundary.setElementProperties(newDetails);
 		testElementBoundary.setLatlng(new LocationBoundary(50, 30));

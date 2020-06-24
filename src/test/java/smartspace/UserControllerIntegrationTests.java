@@ -82,7 +82,7 @@ public class UserControllerIntegrationTests {
 	@Test
 	public void testLoginValidUser() throws Exception{
 		// GIVEN the database contains 3 users
-		UserEntity testUser = new UserEntity("test@test.com", "smartSpaceProject", "giron", ":)", UserRole.PLAYER, 40);
+		UserEntity testUser = new UserEntity("test@test.com", "smartSpaceProject", "testUser", ":)", UserRole.PLAYER, 40);
 		this.userDao.create(testUser);
 
 		
@@ -104,7 +104,7 @@ public class UserControllerIntegrationTests {
 		admin.setKey("admin#2019B.test");
 		admin.setAvatar(":)");
 		admin.setPoints(122);
-		admin.setUserName("Giron");
+		admin.setUserName("testUser");
 		this.userDao.insert(admin);
 		// GIVEN the database contains 3 users
 		int size = 3;
@@ -134,7 +134,7 @@ public class UserControllerIntegrationTests {
 	@Test
 	public void testUpdateUserWithoutTheirPoints() throws Exception{
 		// GIVEN the database contains a user
-		UserEntity testUserEntity = new UserEntity("test@test.com", "smartSpaceProject", "giron", ":)", UserRole.PLAYER, 40);
+		UserEntity testUserEntity = new UserEntity("test@test.com", "smartSpaceProject", "testUser", ":)", UserRole.PLAYER, 40);
 		this.userDao.create(testUserEntity);
 		
 		
@@ -164,7 +164,7 @@ public class UserControllerIntegrationTests {
 	public void testDeleteByKey() throws Exception {
 		// GIVEN the database contains a single user
 		String key = this.userDao
-				.create(new UserEntity("test@test.com", "smartSpaceProject", "giron", ":)", UserRole.PLAYER, 40))
+				.create(new UserEntity("test@test.com", "smartSpaceProject", "testUser", ":)", UserRole.PLAYER, 40))
 				.getKey();
 		// System.err.println("***** " + this.userDao.readAll().size() + " ******");
 		// WHEN I delete using the user key
@@ -178,11 +178,11 @@ public class UserControllerIntegrationTests {
 	@Test
 	public void testDeleteByKeyWhileDatabseIsNotEmptyAtTheEnd() throws Exception {
 		UserEntity check = this.userDao
-				.create(new UserEntity("test@test.com", "smartSpaceProject", "giron", ":)", UserRole.PLAYER, 40));
+				.create(new UserEntity("test@test.com", "smartSpaceProject", "testUser", ":)", UserRole.PLAYER, 40));
 		String key = check.getKey();
 		
 		this.userDao
-		.create(new UserEntity("test@test.com123", "smartSpaceProject123", "giron123", ":)", UserRole.PLAYER, 40));
+		.create(new UserEntity("test@test.com123", "smartSpaceProject123", "testUser123", ":)", UserRole.PLAYER, 40));
 		
 		 System.err.println("***** " + this.userDao.readAll().size() + "\n" + this.userDao.readAll() + " ******");
 
